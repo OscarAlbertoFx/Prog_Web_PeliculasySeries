@@ -33,15 +33,18 @@ and open the template in the editor.
                                                     <p:growl autoUpdate="true"/>
                                                     <div class="row">
                                                         <div class="col s12 input-field">
-                                                            <h:inputText id="username" required="true" requiredMessage="Usuario es Requerido"/>
-                                                            <h:outputLabel for="username" value="Correo"/>
+                                                            <p:inputText id="username" required="false" requiredMessage="Usuario es Requerido"/>
+                                                            <p:outputLabel for="username" value="Correo"/>
                                                         </div>
                                                         <div class="col s12 input-field">
-                                                            <h:inputText id="password" required="true" requiredMessage="Contraseña es requerida"/>
-                                                            <h:outputLabel for="username" value="Contraseña"/>
+                                                            <p:inputText id="password" required="false" requiredMessage="Contraseña es requerida"/>
+                                                            <p:outputLabel for="username" value="Contraseña"/>
                                                         </div>
-                                                        <div class="col s12 input-field">
-                                                            <h:commandLink value="Ingresar" class="btn btn-large" />
+                                                        <div class="col s6 input-field">
+                                                            <p:commandLink value="Ingresar" class="btn btn-large" action="Home.xhtml"/>
+                                                        </div>
+                                                        <div class="col s6 input-field">
+                                                            <p:commandLink value="Registrarse" class="btn btn-large" action="Registro.xhtml" />
                                                         </div>
                                                     </div> 
                                                 </h:form>
