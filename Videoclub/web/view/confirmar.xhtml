@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Confirmar</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library="css" name="materialize.min.css"/>
+        <h:outputStylesheet library="css" name="materialize.css"/>
+        <h:outputStylesheet library="css" name="style.css"/>
+        <h:outputScript library="js" name="materialize.min.js"/>
+        <h:outputStylesheet library="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    </h:head>
+        <ui:composition template="/Template/master.xhtml">
+            <ui:define name="content">
+                <h:body styleClass="cyan lighten-5">
+                <h:form class="col s12">
+                    <br/>
+                    <div class="row">
+                        <p:fieldset legend="Confirmar datos de la compra" >
+                            <p:panelGrid columns="4">
+                                <p:dataTable var="comp" value="">
+                                    <p:column headerText="Fecha de Compra">
+                                        <h:outputText value="5/5/2018"/>                                        
+                                    </p:column>
+                                    <p:column headerText="Categoria">
+                                        <h:outputText value="Terror"/>                                                                                
+                                    </p:column>
+                                    <p:column headerText="Descripcion">
+                                        <h:outputText value=""/>
+                                    </p:column>
+                                    <p:column headerText="Nombre del Producto">
+                                        <h:outputText value="Thor"/>
+                                    </p:column>
+                                    <p:column headerText="Precio">
+                                        <h:outputText value="99$"/>
+                                    </p:column>
+                                </p:dataTable>
+                            </p:panelGrid>
+                            
+                            <p:panelGrid columns="4">
+                                <p:dataTable var="comp" value="">
+                                    <p:column headerText="Fecha de Compra">
+                                        <h:outputText value="5/5/2018"/>                                        
+                                    </p:column>
+                                    <p:column headerText="Categoria">
+                                        <h:outputText value="Comedia"/>                                                                                
+                                    </p:column>
+                                    <p:column headerText="Descripcion">
+                                        <h:outputText value=""/>
+                                    </p:column>
+                                    <p:column headerText="Nombre del Producto">
+                                        <h:outputText value="Thor"/>
+                                    </p:column>
+                                    <p:column headerText="Precio">
+                                        <h:outputText value="99$"/>
+                                    </p:column>
+                                </p:dataTable>
+                            </p:panelGrid>
+                        </p:fieldset>
+
+                    </div>
+                    <p:fieldset legend="Confirmar rentas">
+                        <p:dataTable var="rent" value="">
+                            <p:column headerText="Fecha de Renta">               
+                                <h:outputText value="5/5/2018"/>                        
+                            </p:column>
+                            <p:column headerText="Fecha de Entrega">
+                                <h:outputText value="30/5/2018"/>
+                            </p:column>
+                            <p:column headerText="Categoria">
+                                <h:outputText value="Terror"/>
+                            </p:column>
+                            <p:column headerText="Nombre del Producto">
+                                <h:outputText value="IronMan"/>
+                            </p:column>
+                            <p:column headerText="Total Pagado">
+                                <h:outputText value="80$"/>
+                            </p:column>
+                        </p:dataTable>
+                    </p:fieldset>
+                    <br/>
+                    <p:fieldset legend="Datos de pago">
+                        <p:dataTable value="DatosPago">
+                            <p:column>
+                                <h:outputText value="Tarjeta"/><br/><br/><br/>
+                                <h:outputText value="Nombre"/><br/><br/><br/>
+                                <h:outputText value="Apellido"/><br/><br/><br/>
+                                <h:outputText value="Fecha caducidad"/><br/><br/><br/>
+                                <h:outputText value="CVV"/>
+                            </p:column>
+                            <p:column>
+                                <h:inputText/><br/>
+                                <h:inputText/><br/>
+                                <h:inputText/><br/>
+                                <h:inputText/><br/>
+                                <h:inputText/>
+                            </p:column>
+                        </p:dataTable>
+                    </p:fieldset>
+                    <br/>
+                    <p:fieldset legend="Total">
+                        <p:dataTable value="total">
+                            <p:column>
+                                <h:outputText value="Total"/>
+                            </p:column>
+                            <p:column>
+                                <!--<p:outputLabel value="$ 23324423"/>-->
+                                <h:outputText value="$6889.000"/>
+                            </p:column>
+                        </p:dataTable>
+                    </p:fieldset>
+                    <p:commandButton value="Confirmar"/>
+                    <p:commandButton value="Cancelar "/>
+                </h:form>
+            </h:body>
+            </ui:define>
+        </ui:composition>
+</html>
+
