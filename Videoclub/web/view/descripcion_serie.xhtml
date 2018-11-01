@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Descripcion Serie</title>
+        <style>
+            #basic .ui-panel-content{
+                background-image: url(../img/desc.jpg);
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <ui:composition template="/Template/master.xhtml">
+
+            <ui:define name="content">
+                <h:panelGrid columns="2" cellpadding="20">
+                    <h1 style="color: black;font-size: 30pt;">Descripción de Serie</h1>
+                    <p:graphicImage library="img" name="serie.png" style="width: 180px;"/>
+                </h:panelGrid>
+                <div>
+                    <h:form>
+                        <h:panelGrid columns="2" cellspacing="30">
+                            <p:panel id="basic" header="The Walking Dead" style="margin-bottom:20px;padding-bottom: 40px;font-size: 15pt;">
+                                <h:panelGrid columns="2" cellpadding="20">
+                                    <p:graphicImage library="img" name="dead.jpg" style="width: 300px;"/>
+                                    <h:panelGrid columns="2" cellpadding="10">
+                                        <h:outputLabel styleClass="caracteristica"><b>Sinopsis</b></h:outputLabel>
+                                        <h:outputText style="text-align: justify;font-size: 11pt;"
+                                                      value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family." />
+
+                                        <h:outputLabel styleClass="caracteristica"><b>Clasificación</b></h:outputLabel>
+                                        <h:outputText value="PG-15"/>
+
+                                        <h:outputLabel styleClass="caracteristica"><b>Rating</b></h:outputLabel>
+                                        <h:outputText value="9.5"/>
+
+                                        <h:outputLabel styleClass="caracteristica"><b>Director</b></h:outputLabel>
+                                        <h:outputText value="Juan Manuel Garcia Perez"/>
+
+                                        <h:outputLabel styleClass="caracteristica"><b>Categoria</b></h:outputLabel>
+                                        <h:outputText value="Drama"/>
+
+                                        <h:outputLabel styleClass="caracteristica"><b>Numero de Temporadas</b></h:outputLabel>
+                                        <h:outputText value="7"/>
+
+                                        <h:outputLabel styleClass="caracteristica"><b>Precio</b></h:outputLabel>
+                                        <h:outputText value="$1500.99"/>
+                                    </h:panelGrid>
+                                </h:panelGrid>
+                            </p:panel>
+
+                            <p:panel id="basic2" header="Opciones" style="margin-bottom:20px;padding-bottom: 40px;font-size: 15pt;">
+                                <h:panelGrid columns="1" cellpadding="20">
+
+                                    <h:commandLink value="Comprar" styleClass="btn btn-large" style="border-radius: 5px;font-size: 13pt;color: white;background-color: #0091ea;width: 200px;"/>
+                                </h:panelGrid>
+                            </p:panel>
+                        </h:panelGrid>
+                    </h:form>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+    </h:body>
+</html>
+

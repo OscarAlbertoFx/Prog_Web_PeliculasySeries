@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <div id="menuBar">
+            
+            <h:form>  
+                <p:growl id="messages"/>
+                <p:menubar style="background-color: white;">
+                    <p:menuitem value="Inicio" icon="ui-icon-home" style="font-size: 19pt;margin-top: 25px;"/>
+                    <p:menuitem value="Peliculas" icon="ui-icon-image" style="font-size: 19pt;margin-top: 25px;"/>
+                    <p:menuitem value="Series" icon="ui-icon-image" style="font-size: 19pt;margin-top: 25px;"/>
+                    <f:facet name="options">
+                        <h:panelGrid columns="2" style="text-decoration: none">
+                            <p:inputText style="margin-right:10px" placeholder="Buscar"/>
+                            <h:commandLink value="Iniciar Sesión" styleClass="btn btn-large" style="margin-right: 15px;border-radius: 5px;font-size: 13pt;color: white;background-color: #0091ea;"/>
+                        </h:panelGrid>
+                    </f:facet>
+                </p:menubar>
+            </h:form>
+        </div>
+    </h:body>
+</html>
+
