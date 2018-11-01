@@ -16,7 +16,6 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <h:outputStylesheet library="css" name="materialize.min.css"/>
         <h:outputScript library="js" name="materialize.min.js"/>
-        <h:outputScript library="js" name="spaishlocale.js"/>
     </h:head>
     <ui:composition template="/Template/master.xhtml">
         <ui:define name="content">
@@ -24,79 +23,94 @@ and open the template in the editor.
                 <div class="row">
                     <h:form class="col s12" title="Registro">
                         <p:fieldset legend="Registro">
-                            <p:panel id="panell" header="Datos Personales" style="margin-bottom:10px;">
+                            <p:panel id="panelPD" header="Datos Personales" style="margin-bottom:10px;">
                                 <div class="card">
                                     <div class="card-content">
                                         <div class="row">
-                                            <div class="input-field col s4">                            
+                                            <div class="input-field col s4">                                            
                                                 <p:outputLabel for="txtNombre" value="Nombre"/>
-                                                <p:inputText id="txtNombre" required="true" />
+                                                <p:inputText id="txtNombre" required="true" requiredMessage="Campo Requerido" />
+                                                <p:message for="txtNombre"/>
                                             </div>
                                             <div class="input-field col s4">
                                                 <p:outputLabel for="txtApP" value="Apellido Paterno"/>
-                                                <p:inputText id="txtApP" required="true" />
+                                                <p:inputText id="txtApP" required="true" requiredMessage="Campo Requerido"/>
+                                                <p:message for="txtApP"/>
                                             </div>
                                             <div class="input-field col s4">
                                                 <p:outputLabel for="txtApM" value="ApellidoMaterno"/>
-                                                <p:inputText id="txtApM" required="true" />
+                                                <p:inputText id="txtApM" required="true" requiredMessage="Campo Requerido" />
+                                                  <p:message for="txtApM"/>
                                             </div>
                                             <div class="input-field col s6">
                                                 <p:outputLabel for="txtFN" value="Fecha de Nacimiento"/>
-                                                <p:calendar id="txtFN" required="true" locale="es"/>
+                                                <p:calendar id="txtFN" required="true" locale="es" requiredMessage="Campo Requerido"/>
+                                                  <p:message for="txtFN"/>
                                             </div>
                                             <div class="input-field col s6">
                                                 <p:outputLabel for="txtCorreo" value="Correo"/>
-                                                <p:inputText id="txtCorreo" required="true" type="email" />
+                                                <p:inputText id="txtCorreo" required="true" type="email" requiredMessage="Campo Requerido" />
+                                                  <p:message for="txtCorreo"/>
                                             </div>
                                             <div class="input-field col s6">
                                                 <p:outputLabel for="txtContraseña" value="Contraseña"/>
-                                                <p:password id="txtContraseña" required="true"/>
+                                                <p:password id="txtContraseña" match="txtRContraseña" validatorMessage="Las claves no Coiciden"
+                                                 weakLabel="Debil" strongLabel="Fuerte" goodLabel="Bueno" feedback="true" promptLabel="Ingrese una Clave" requiredMessage="Campo Requerido"/>
+                                                 <p:message for="txtContraseña"/>
                                             </div>
                                             <div class="input-field col s6">
                                                 <p:outputLabel for="txtRContraseña" value="Repetir Contraseña"/>
-                                                <p:password id="txtRContraseña" required="true"/>
+                                                <p:password id="txtRContraseña" requiredMessage="Campo Requerido"/>
+                                                <p:message for="txtContraseña"/>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </p:panel>
-                            <p:panel id="panel" header="Datos de Envio" style="margin-bottom:10px;">
+                            <p:panel id="panelED" header="Datos de Envio" style="margin-bottom:10px;">
                                 <div class="card">
                                     <div class="card-content">
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <p:outputLabel for="txtCalle" value="Calle"/>
-                                                <p:inputText id="txtCalle" required="true" />
+                                                <p:inputText id="txtCalle" required="true" requiredMessage="Campo Requerido" />
+                                                  <p:message for="txtCalle"/>
                                             </div>
                                             <div class="input-field col s6">
                                                 <p:outputLabel for="txtNI" value="Numero Interior"/>
-                                                <p:inputText id="txtNI" required="true"/>
+                                                <p:inputText id="txtNI" required="true" requiredMessage="Campo Requerido"/>
+                                                  <p:message for="txtNI"/>
                                             </div>
                                             <div class="input-field col s6">
                                                 <p:outputLabel for="txtNE" value="Numero Exterior"/>
-                                                <p:inputText id="txtNE" required="true"/>
+                                                <p:inputText id="txtNE" required="true" requiredMessage="Campo Requerido"/>
+                                                  <p:message for="txtNE"/>
                                             </div>
                                             <div class="input-field col s6">
                                                 <p:outputLabel for="txtCP" value="Codigo Postal"/>
-                                                <p:inputText id="txtCP" required="true"/>
+                                                <p:inputText id="txtCP" required="true" requiredMessage="Campo Requerido"/>
+                                                  <p:message for="txtCP"/>
                                             </div>
                                             <div class="input-field col s6">
                                                 <p:outputLabel for="celular" value="Celular"/>
-                                                <p:inputText id="celular" required="true"/>
+                                                <p:inputText id="celular" required="true" requiredMessage="Campo Requerido"/>
+                                                  <p:message for="celular"/>
                                             </div>
                                             <div class="input-field col s6">
                                                 <p:outputLabel for="txtTF" value="Telefono Fijo"/>
-                                                <p:inputText id="txtTF" required="true"/>  
+                                                <p:inputText id="txtTF" required="true" requiredMessage="Campo Requerido"/>  
+                                                <p:message for="txtTF"/>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </p:panel>
-                            <h:commandLink value="Registrarse" class="btn btn-large" />
+                            <p:commandLink value="Registrarse" class="btn btn-large" update="panelED, panelPD"/>
                         </p:fieldset>
                     </h:form>
                 </div>
-                <script type="text/javascript" src="js/materialize.min.js"></script>
+                <h:outputScript library="js" name="materialize.min.js"/>
+                <h:outputScript library="js" name="españolcalend.js"/>
             </h:body>
         </ui:define>
     </ui:composition>
