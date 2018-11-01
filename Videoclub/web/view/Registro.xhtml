@@ -16,16 +16,15 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <h:outputStylesheet library="css" name="materialize.min.css"/>
         <h:outputScript library="js" name="materialize.min.js"/>
+        <h:outputScript library="js" name="spaishlocale.js"/>
     </h:head>
     <ui:composition template="/Template/master.xhtml">
-
         <ui:define name="content">
             <h:body styleClass="cyan lighten-5">
                 <div class="row">
                     <h:form class="col s12" title="Registro">
                         <p:fieldset legend="Registro">
                             <p:panel id="panell" header="Datos Personales" style="margin-bottom:10px;">
-
                                 <div class="card">
                                     <div class="card-content">
                                         <div class="row">
@@ -43,7 +42,7 @@ and open the template in the editor.
                                             </div>
                                             <div class="input-field col s6">
                                                 <p:outputLabel for="txtFN" value="Fecha de Nacimiento"/>
-                                                <p:calendar id="txtFN" required="true" class="datepicker" />
+                                                <p:calendar id="txtFN" required="true" locale="es"/>
                                             </div>
                                             <div class="input-field col s6">
                                                 <p:outputLabel for="txtCorreo" value="Correo"/>
@@ -60,7 +59,6 @@ and open the template in the editor.
                                         </div>
                                     </div>
                                 </div>
-
                             </p:panel>
                             <p:panel id="panel" header="Datos de Envio" style="margin-bottom:10px;">
                                 <div class="card">
@@ -98,8 +96,6 @@ and open the template in the editor.
                         </p:fieldset>
                     </h:form>
                 </div>
-
-
                 <script type="text/javascript" src="js/materialize.min.js"></script>
             </h:body>
         </ui:define>
