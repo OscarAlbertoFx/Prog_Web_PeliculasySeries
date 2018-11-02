@@ -27,40 +27,45 @@ and open the template in the editor.
                                 <div class="card">
                                     <div class="card-content">
                                         <div class="row">
-                                            <div class="input-field col s4">                                            
+                                            <div class="input-field col s2">                                            
+                                                <p:outputLabel for="txtidUsuario" value="idUsuario"/>
+                                                <p:inputText id="txtidUsuario" value="#{bean.idUsuario}" required="true" requiredMessage="Campo Requerido" />
+                                                <p:message for="txtidUsuario"/>
+                                            </div>
+                                            <div class="input-field col s2">                                            
                                                 <p:outputLabel for="txtNombre" value="Nombre"/>
-                                                <p:inputText id="txtNombre" required="true" requiredMessage="Campo Requerido" />
+                                                <p:inputText id="txtNombre" value="#{bean.nombre}" required="true" requiredMessage="Campo Requerido" />
                                                 <p:message for="txtNombre"/>
                                             </div>
                                             <div class="input-field col s4">
                                                 <p:outputLabel for="txtApP" value="Apellido Paterno"/>
-                                                <p:inputText id="txtApP" required="true" requiredMessage="Campo Requerido"/>
+                                                <p:inputText id="txtApP" value="#{bean.apellidoP}" required="true" requiredMessage="Campo Requerido"/>
                                                 <p:message for="txtApP"/>
                                             </div>
                                             <div class="input-field col s4">
                                                 <p:outputLabel for="txtApM" value="ApellidoMaterno"/>
-                                                <p:inputText id="txtApM" required="true" requiredMessage="Campo Requerido" />
-                                                  <p:message for="txtApM"/>
+                                                <p:inputText id="txtApM" value="#{bean.apellidoM}" required="true" requiredMessage="Campo Requerido" />
+                                                <p:message for="txtApM"/>
                                             </div>
                                             <div class="input-field col s6">
                                                 <p:outputLabel for="txtFN" value="Fecha de Nacimiento"/>
-                                                <p:calendar id="txtFN" required="true" locale="es" requiredMessage="Campo Requerido"/>
-                                                  <p:message for="txtFN"/>
+                                                <p:calendar id="txtFN" required="false" locale="es" requiredMessage="Campo Requerido"/>
+                                                <p:message for="txtFN"/>
                                             </div>
                                             <div class="input-field col s6">
                                                 <p:outputLabel for="txtCorreo" value="Correo"/>
-                                                <p:inputText id="txtCorreo" required="true" type="email" requiredMessage="Campo Requerido" />
-                                                  <p:message for="txtCorreo"/>
+                                                <p:inputText id="txtCorreo" value="#{bean.correo}" required="true" type="email" requiredMessage="Campo Requerido" />
+                                                <p:message for="txtCorreo"/>
                                             </div>
                                             <div class="input-field col s6">
                                                 <p:outputLabel for="txtContraseña" value="Contraseña"/>
-                                                <p:password id="txtContraseña" match="txtRContraseña" validatorMessage="Las claves no Coiciden"
-                                                 weakLabel="Debil" strongLabel="Fuerte" goodLabel="Bueno" feedback="true" promptLabel="Ingrese una Clave" requiredMessage="Campo Requerido"/>
-                                                 <p:message for="txtContraseña"/>
+                                                <p:password id="txtContraseña" value="#{bean.contraseña}" match="txtRContraseña" validatorMessage="Las claves no Coiciden"
+                                                            weakLabel="Debil" strongLabel="Fuerte" goodLabel="Bueno" feedback="true" promptLabel="Ingrese una Clave" requiredMessage="Campo Requerido"/>
+                                                <p:message for="txtContraseña"/>
                                             </div>
                                             <div class="input-field col s6">
                                                 <p:outputLabel for="txtRContraseña" value="Repetir Contraseña"/>
-                                                <p:password id="txtRContraseña" requiredMessage="Campo Requerido"/>
+                                                <p:password id="txtRContraseña" required="true" requiredMessage="Campo Requerido"/>
                                                 <p:message for="txtContraseña"/>
                                             </div>
                                         </div>
@@ -73,39 +78,39 @@ and open the template in the editor.
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <p:outputLabel for="txtCalle" value="Calle"/>
-                                                <p:inputText id="txtCalle" required="true" requiredMessage="Campo Requerido" />
-                                                  <p:message for="txtCalle"/>
+                                                <p:inputText id="txtCalle" value="#{bean.calle}" required="true" requiredMessage="Campo Requerido" />
+                                                <p:message for="txtCalle"/>
                                             </div>
                                             <div class="input-field col s6">
                                                 <p:outputLabel for="txtNI" value="Numero Interior"/>
-                                                <p:inputText id="txtNI" required="true" requiredMessage="Campo Requerido"/>
-                                                  <p:message for="txtNI"/>
+                                                <p:inputText id="txtNI" value="#{bean.no_int}" required="true" requiredMessage="Campo Requerido"/>
+                                                <p:message for="txtNI"/>
                                             </div>
                                             <div class="input-field col s6">
                                                 <p:outputLabel for="txtNE" value="Numero Exterior"/>
-                                                <p:inputText id="txtNE" required="true" requiredMessage="Campo Requerido"/>
-                                                  <p:message for="txtNE"/>
+                                                <p:inputText id="txtNE" value="#{bean.no_ext}" required="true" requiredMessage="Campo Requerido"/>
+                                                <p:message for="txtNE"/>
                                             </div>
                                             <div class="input-field col s6">
                                                 <p:outputLabel for="txtCP" value="Codigo Postal"/>
-                                                <p:inputText id="txtCP" required="true" requiredMessage="Campo Requerido"/>
-                                                  <p:message for="txtCP"/>
+                                                <p:inputText id="txtCP" value="#{bean.cp}" required="true" requiredMessage="Campo Requerido"/>
+                                                <p:message for="txtCP"/>
                                             </div>
                                             <div class="input-field col s6">
                                                 <p:outputLabel for="celular" value="Celular"/>
-                                                <p:inputText id="celular" required="true" requiredMessage="Campo Requerido"/>
-                                                  <p:message for="celular"/>
+                                                <p:inputText id="celular" value="#{bean.celular}" required="true" requiredMessage="Campo Requerido"/>
+                                                <p:message for="celular"/>
                                             </div>
                                             <div class="input-field col s6">
                                                 <p:outputLabel for="txtTF" value="Telefono Fijo"/>
-                                                <p:inputText id="txtTF" required="true" requiredMessage="Campo Requerido"/>  
+                                                <p:inputText id="txtTF" value="#{bean.telefono_fijo}" required="true" requiredMessage="Campo Requerido"/>  
                                                 <p:message for="txtTF"/>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </p:panel>
-                            <p:commandLink value="Registrarse" class="btn btn-large" update="panelED, panelPD"/>
+                            <p:commandLink value="Registrarse" action="#{bean.alta()}" class="btn btn-large" update="panelED, panelPD"/>
                         </p:fieldset>
                     </h:form>
                 </div>

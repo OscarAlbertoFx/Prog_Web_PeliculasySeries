@@ -200,6 +200,7 @@ public class UsuarioBean {
         } else {
             Usuario user = new Usuario(idUsuario,nombre, contraseña, apellidoP, apellidoM, correo ,calle, no_int, no_ext, cp, celular, telefono_fijo);
             usuarioFacade.crearUsuario(user);
+            System.out.println("yeahhhhhhhhhhhhhhhhhhhhhh");
             fc.addMessage("", new FacesMessage("Se registro correctamente"));
         }
     }
