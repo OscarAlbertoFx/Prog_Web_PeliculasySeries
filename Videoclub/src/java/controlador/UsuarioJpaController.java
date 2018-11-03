@@ -33,7 +33,6 @@ import javax.transaction.UserTransaction;
 public class UsuarioJpaController implements Serializable {
 
     public UsuarioJpaController(EntityManagerFactory emf) {
-
         this.emf = emf;
     }
     private EntityTransaction utx = null;
