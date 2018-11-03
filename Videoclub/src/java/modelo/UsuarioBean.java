@@ -28,6 +28,20 @@ public class UsuarioBean {
     private String calle;
     private String contraseña;
     private String correo;
+    private String no_int;
+    private String no_ext;
+    private String cp;
+    private String celular;
+    private String telefono_fijo;
+
+    private UsuarioFacade usuarioFacade = new UsuarioFacade();
+    private FacesContext fc = FacesContext.getCurrentInstance();
+    private ExternalContext ec = fc.getExternalContext();
+    private Usuario usuario = new Usuario();
+
+    public UsuarioBean() {
+
+    }
 
     public int getIdUsuario() {
         return idUsuario;
@@ -125,59 +139,11 @@ public class UsuarioBean {
         this.telefono_fijo = telefono_fijo;
     }
 
-    public UsuarioFacade getUsuarioFacade() {
-        return usuarioFacade;
-    }
-
-    public void setUsuarioFacade(UsuarioFacade usuarioFacade) {
-        this.usuarioFacade = usuarioFacade;
-    }
-
-    public FacesContext getFc() {
-        return fc;
-    }
-
-    public void setFc(FacesContext fc) {
-        this.fc = fc;
-    }
-
-    public ExternalContext getEc() {
-        return ec;
-    }
-
-    public void setEc(ExternalContext ec) {
-        this.ec = ec;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-    private String no_int;
-    private String no_ext;
-    private String cp;
-    private String celular;
-    private String telefono_fijo;
-
-    private UsuarioFacade usuarioFacade = new UsuarioFacade();
-    private FacesContext fc = FacesContext.getCurrentInstance();
-    private ExternalContext ec = fc.getExternalContext();
-    private Usuario usuario = new Usuario();
-
-    /**
-     * Creates a new instance of Bean
-     */
-    public UsuarioBean() {
-    }
-
     public void alta() {
 
         if (nombre.equals("")) {
             fc.addMessage("", new FacesMessage("Te falta escribir tu nombre"));
-        }else if (contraseña.equals("")) {
+        } else if (contraseña.equals("")) {
             fc.addMessage("", new FacesMessage("Te falta escribir tu contraseña"));
         } else if (apellidoP.equals("")) {
             fc.addMessage("", new FacesMessage("Te falta escribir tu ap"));
@@ -189,19 +155,26 @@ public class UsuarioBean {
             fc.addMessage("", new FacesMessage("Te falta escribir tu pass"));
         } else if (no_int.equals("")) {
             fc.addMessage("", new FacesMessage("Te falta escribir tu numero interior"));
-        }else if (no_ext.equals("")) {
+        } else if (no_ext.equals("")) {
             fc.addMessage("", new FacesMessage("Te falta escribir tu numero exteior"));
         } else if (cp.equals("")) {
             fc.addMessage("", new FacesMessage("Te falta escribir tu codigo postal"));
         } else if (celular.equals("")) {
             fc.addMessage("", new FacesMessage("Te falta escribir tu celular"));
-        }  else if (telefono_fijo.equals("")) {
+        } else if (telefono_fijo.equals("")) {
             fc.addMessage("", new FacesMessage("Te falta escribir tu telefono fijo"));
         } else {
-            Usuario user = new Usuario(idUsuario,nombre, contraseña, apellidoP, apellidoM, correo ,calle, no_int, no_ext, cp, celular, telefono_fijo);
+            FacesContext context = FacesContext.getCurrentInstance();
+            Usuario user = new Usuario(idUsuario, nombre, contraseña, apellidoP, apellidoM, correo, calle, no_int, no_ext, cp, celular, telefono_fijo);
             usuarioFacade.crearUsuario(user);
             System.out.println("yeahhhhhhhhhhhhhhhhhhhhhh");
-            fc.addMessage("", new FacesMessage("Se registro correctamente"));
+            context.addMessage("", new FacesMessage("Se registro correctamente"));
+            try {
+                FacesContext contex = FacesContext.getCurrentInstance();
+                contex.getExternalContext().redirect("/Videoclub/faces/view/Login.xhtml");
+            } catch (Exception e) {
+                System.out.println("Me voy al carajo, no funciona esta redireccion");
+            }
         }
     }
 
@@ -228,6 +201,29 @@ public class UsuarioBean {
         FacesContext fc = FacesContext.getCurrentInstance();
         fc.addMessage("", new FacesMessage("No existe un amigo con ese correo"));
         return null;
+    }
+
+    public void submit() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        if (correo.isEmpty() || contraseña.isEmpty()) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Los datos no son validos", "Error"));
+        } else {
+            usuarioFacade = new UsuarioFacade();
+            if (usuarioFacade.buscarUsuario(correo, contraseña)) {
+                try {
+                    FacesContext contex = FacesContext.getCurrentInstance();
+                    contex.getExternalContext().redirect("/Videoclub/faces/view/Home.xhtml");
+                } catch (Exception e) {
+                    System.out.println("Me voy al carajo, no funciona esta redireccion");
+                }
+            } else {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Usuario no hallado", "Advertencia"));
+            }
+        }
+    }
+
+    public String navegar() {
+        return "/view/Home";
     }
 
 }
