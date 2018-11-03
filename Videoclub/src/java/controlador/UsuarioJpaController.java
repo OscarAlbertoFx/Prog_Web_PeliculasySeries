@@ -201,4 +201,19 @@ public class UsuarioJpaController implements Serializable {
         }
     }
 
+    public Usuario findByCorreo(String login){
+        Usuario user = null;
+        List<Usuario> users;
+        EntityManager em = getEntityManager();
+        System.out.println("Buscando usuario por email jpacontroller");
+        Query consulta = em.createNamedQuery("Usuario.findByCorreo");
+        consulta.setParameter("correo", login);
+        users=consulta.getResultList();
+        if (!users.isEmpty()) {
+            System.out.println("Lo encontro");
+            System.out.println("users.get[0]: "+users.get(0));
+            user = users.get(0);
+        }
+        return user;
+    }
 }

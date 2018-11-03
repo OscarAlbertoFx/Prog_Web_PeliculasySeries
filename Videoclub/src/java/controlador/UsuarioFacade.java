@@ -48,4 +48,36 @@ public class UsuarioFacade {
         return user;
     }
 
+    public boolean buscarUsuario(String correo, String contraseña) {
+        Usuario userPojo;
+        boolean valido = false;
+
+        userPojo = new Usuario();
+
+        userPojo = userJpa.findByCorreo(correo);
+
+        System.out.println("Usuario hallado ");
+        if (userPojo != null) {
+            valido = validarUsuario(userPojo, contraseña);
+            if (valido) {
+                System.out.println("Es valido");
+                return true;
+            } else {
+                System.out.println("No es valido");
+                return false;
+            }
+        }
+        return false;
+    }
+    
+    public boolean validarUsuario(Usuario user, String pwd) {
+        String actLogin, actPwd;
+        actPwd = user.getContraseña();
+        if (actPwd.equals(pwd)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
