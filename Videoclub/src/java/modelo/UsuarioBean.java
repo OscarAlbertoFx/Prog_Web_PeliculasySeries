@@ -222,8 +222,5 @@ public class UsuarioBean {
         }
     }
 
-    public String navegar() {
-        return "/view/Home";
-    }
 
 }
