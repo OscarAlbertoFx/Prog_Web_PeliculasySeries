@@ -205,10 +205,9 @@ public class UsuarioBean {
         }
     }
 
-    public String buscaByidUsuario() {
+    public String buscaBycorreo() {
         Usuario usuarios;
-        usuarios = usuarioFacade.buscarPoridUsuario(idUsuario);
-
+        usuarios = usuarioFacade.buscarPorcorreo(correo);
         if (usuarios != null) {
             this.idUsuario = usuarios.getIdUsuario();
             this.nombre = usuarios.getNombre();
@@ -222,10 +221,12 @@ public class UsuarioBean {
             this.cp = usuarios.getCp();
             this.celular = usuarios.getCelular();
             this.telefono_fijo = usuarios.getTelefonoFijo();
+            System.out.println("Aqui esta"+correo);
             return "Resultado";
+           
         }
         FacesContext fc = FacesContext.getCurrentInstance();
-        fc.addMessage("", new FacesMessage("No existe un amigo con ese telefono"));
+        fc.addMessage("", new FacesMessage("No existe un amigo con ese correo"));
         return null;
     }
 

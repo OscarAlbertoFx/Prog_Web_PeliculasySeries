@@ -42,9 +42,9 @@ public class UsuarioFacade {
         }
     }
 
-    public Usuario buscarPoridUsuario(Integer idUsername) {
+    public Usuario buscarPorcorreo(String Correo) {
         Usuario user;
-        user = userJpa.findCuates(idUsername);
+        user = userJpa.findCuates(Correo);
         return user;
     }
 

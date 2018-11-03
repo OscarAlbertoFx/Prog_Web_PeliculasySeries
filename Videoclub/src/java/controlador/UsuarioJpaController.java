@@ -158,7 +158,7 @@ public class UsuarioJpaController implements Serializable {
         }
     }
 
-    public Usuario findCuates(Integer IdUsername) {
+    public Usuario findCuates(String correo) {
         Usuario prb = new Usuario();
         EntityManager eme;
 
@@ -166,15 +166,14 @@ public class UsuarioJpaController implements Serializable {
         utx = eme.getTransaction();
         utx.begin();
 
-        TypedQuery<Usuario> q = eme.createNamedQuery("SELECT u FROM usuario AS u WHERE u.idUsuario ='" + IdUsername + "'", Usuario.class);
+        TypedQuery<Usuario> q = eme.createNamedQuery("SELECT u FROM Usuario u WHERE u.correo = :'" + correo + "'", Usuario.class);
         utx.commit();
-        q.setParameter("username", IdUsername);
-
-        prb.setIdUsuario(IdUsername);
+        q.setParameter("username", correo);
+        prb.setCorreo(q.getSingleResult().getCorreo());
         prb.setNombre(q.getSingleResult().getNombre());
         prb.setApellidoP(q.getSingleResult().getApellidoP());
         prb.setApellidoM(q.getSingleResult().getApellidoM());
-        prb.setCorreo(q.getSingleResult().getCorreo());
+        prb.setIdUsuario(q.getSingleResult().getIdUsuario());
         prb.setContraseña(q.getSingleResult().getContraseña());
         prb.setCalle(q.getSingleResult().getCalle());
         prb.setCp(q.getSingleResult().getCp());
