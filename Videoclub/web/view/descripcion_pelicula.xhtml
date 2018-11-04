@@ -19,10 +19,12 @@
                     <p:graphicImage library="img" name="movie.png" style="width: 150px;"/>
                 </h:panelGrid>
                 <div>
-                    <h:form>
+                    <h:form id="myForm">
                         <h:panelGrid columns="2" cellspacing="30">
+
                             <p:panel id="basic" style="margin-bottom:20px;padding-bottom: 40px;font-size: 15pt;">
-                                <p:fieldset legend="Thor" style="color: black">
+                                <p:fieldset legend="#{peliculaBean.titulo}" style="color: black">
+                                    <h:inputHidden value="#{peliculaBean.idPelicula}" id="movie"/>
                                     <h:panelGrid columns="2" cellpadding="20">
                                         <p:graphicImage library="img" name="peli#{peliculaBean.idPelicula}.jpg" style="width: 300px;"/>
                                         <h:panelGrid columns="2" cellpadding="10">
@@ -52,9 +54,10 @@
                                 </p:fieldset>
                             </p:panel>
                             <p:panel id="basic2" header="Opciones" style="margin-bottom:20px;padding-bottom: 40px;font-size: 15pt;">
-                                <h:commandLink value="Comprar" styleClass="btn btn-large" style="border-radius: 5px;font-size: 13pt;color: white;background-color: #0091ea;width: 200px;margin-bottom: 10px;" action="#{compraBean.agregarCompra(id)}"/>
-                                <h:commandLink value="Rentar" styleClass="btn btn-large" style="border-radius: 5px;font-size: 13pt;color: white;background-color: #00C853;width: 200px;" action="#{compraBean.agregarCompra(id)}"/>
+                                <h:commandLink value="Comprar" styleClass="btn btn-large" style="border-radius: 5px;font-size: 13pt;color: white;background-color: #0091ea;width: 200px;margin-bottom: 10px;" action="#{compraBean.crearCompra(userLog.correo)}"/>
+                                <h:commandLink value="Rentar" styleClass="btn btn-large" style="border-radius: 5px;font-size: 13pt;color: white;background-color: #00C853;width: 200px;" action="#{compraBean.crearRenta(userLog.correo)}"/>
                             </p:panel>
+
                         </h:panelGrid>
                     </h:form>
                 </div>
