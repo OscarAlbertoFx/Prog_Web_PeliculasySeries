@@ -6,7 +6,9 @@
 package entidad;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,15 +16,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author tigre
+ * @author aaron
  */
 @Entity
 @Table(name = "usuario")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
     , @NamedQuery(name = "Usuario.findByIdUsuario", query = "SELECT u FROM Usuario u WHERE u.idUsuario = :idUsuario")
@@ -45,41 +52,74 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @Column(name = "idUsuario")
     private Integer idUsuario;
-    @Size(max = 50)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
     @Column(name = "correo")
     private String correo;
-    @Size(max = 50)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
     @Column(name = "contrase\u00f1a")
     private String contraseña;
-    @Size(max = 50)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
     @Column(name = "nombre")
     private String nombre;
-    @Size(max = 50)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
     @Column(name = "apellidoP")
     private String apellidoP;
-    @Size(max = 50)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
     @Column(name = "apellidoM")
     private String apellidoM;
-    @Size(max = 50)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
     @Column(name = "calle")
     private String calle;
-    @Size(max = 50)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
     @Column(name = "no_int")
     private String noInt;
-    @Size(max = 50)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
     @Column(name = "no_ext")
     private String noExt;
-    @Size(max = 50)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
     @Column(name = "cp")
     private String cp;
-    @Size(max = 50)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
     @Column(name = "celular")
     private String celular;
-    @Size(max = 50)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
     @Column(name = "telefono_fijo")
     private String telefonoFijo;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
+    private List<Comprapelicula> comprapeliculaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
+    private List<Compraserie> compraserieList;
 
-    public Usuario(Integer idUsuario, String correo, String contraseña, String nombre, String apellidoP, String apellidoM, String calle, String no_int, String no_ext, String cp, String celular, String telefono_fijo) {
+    public Usuario() {
+    }
+
+    public Usuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public Usuario(Integer idUsuario, String correo, String contraseña, String nombre, String apellidoP, String apellidoM, String calle, String noInt, String noExt, String cp, String celular, String telefonoFijo) {
         this.idUsuario = idUsuario;
         this.correo = correo;
         this.contraseña = contraseña;
@@ -87,18 +127,11 @@ public class Usuario implements Serializable {
         this.apellidoP = apellidoP;
         this.apellidoM = apellidoM;
         this.calle = calle;
-        this.noInt = no_int;
-        this.noExt = no_ext;
+        this.noInt = noInt;
+        this.noExt = noExt;
         this.cp = cp;
         this.celular = celular;
-        this.telefonoFijo = telefono_fijo;
-    }
-
-    public Usuario() {
-    }
-
-    public Usuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
+        this.telefonoFijo = telefonoFijo;
     }
 
     public Integer getIdUsuario() {
@@ -197,6 +230,24 @@ public class Usuario implements Serializable {
         this.telefonoFijo = telefonoFijo;
     }
 
+    @XmlTransient
+    public List<Comprapelicula> getComprapeliculaList() {
+        return comprapeliculaList;
+    }
+
+    public void setComprapeliculaList(List<Comprapelicula> comprapeliculaList) {
+        this.comprapeliculaList = comprapeliculaList;
+    }
+
+    @XmlTransient
+    public List<Compraserie> getCompraserieList() {
+        return compraserieList;
+    }
+
+    public void setCompraserieList(List<Compraserie> compraserieList) {
+        this.compraserieList = compraserieList;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -221,5 +272,5 @@ public class Usuario implements Serializable {
     public String toString() {
         return "entidad.Usuario[ idUsuario=" + idUsuario + " ]";
     }
-
+    
 }

@@ -55,6 +55,8 @@ public class Categoria implements Serializable {
     private String detalles;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCategoria")
     private List<Pelicula> peliculaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCategoria")
+    private List<Serie> serieList;
 
     public Categoria() {
     }
@@ -100,6 +102,15 @@ public class Categoria implements Serializable {
 
     public void setPeliculaList(List<Pelicula> peliculaList) {
         this.peliculaList = peliculaList;
+    }
+
+    @XmlTransient
+    public List<Serie> getSerieList() {
+        return serieList;
+    }
+
+    public void setSerieList(List<Serie> serieList) {
+        this.serieList = serieList;
     }
 
     @Override

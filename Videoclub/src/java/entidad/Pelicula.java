@@ -7,7 +7,9 @@ package entidad;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,12 +19,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -104,11 +108,11 @@ public class Pelicula implements Serializable {
     @NotNull
     @Column(name = "rating")
     private double rating;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "fecha_agregada")
     @Temporal(TemporalType.DATE)
     private Date fechaAgregada;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPelicula")
+    private List<Detallecomprapelicula> detallecomprapeliculaList;
     @JoinColumn(name = "idCategoria", referencedColumnName = "idCategoria")
     @ManyToOne(optional = false)
     private Categoria idCategoria;
@@ -120,7 +124,7 @@ public class Pelicula implements Serializable {
         this.idPelicula = idPelicula;
     }
 
-    public Pelicula(Integer idPelicula, String titulo, String sinopsis, String año, String duracion, String clasificacion, double precioCompra, double precioRenta, int cantidadAlmacen, int cantidadRenta, String director, double rating, Date fechaAgregada) {
+    public Pelicula(Integer idPelicula, String titulo, String sinopsis, String año, String duracion, String clasificacion, double precioCompra, double precioRenta, int cantidadAlmacen, int cantidadRenta, String director, double rating) {
         this.idPelicula = idPelicula;
         this.titulo = titulo;
         this.sinopsis = sinopsis;
@@ -133,7 +137,6 @@ public class Pelicula implements Serializable {
         this.cantidadRenta = cantidadRenta;
         this.director = director;
         this.rating = rating;
-        this.fechaAgregada = fechaAgregada;
     }
 
     public Integer getIdPelicula() {
@@ -238,6 +241,15 @@ public class Pelicula implements Serializable {
 
     public void setFechaAgregada(Date fechaAgregada) {
         this.fechaAgregada = fechaAgregada;
+    }
+
+    @XmlTransient
+    public List<Detallecomprapelicula> getDetallecomprapeliculaList() {
+        return detallecomprapeliculaList;
+    }
+
+    public void setDetallecomprapeliculaList(List<Detallecomprapelicula> detallecomprapeliculaList) {
+        this.detallecomprapeliculaList = detallecomprapeliculaList;
     }
 
     public Categoria getIdCategoria() {
