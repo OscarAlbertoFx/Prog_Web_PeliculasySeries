@@ -13,6 +13,7 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import entidad.Categoria;
+import entidad.Detallecomprapelicula;
 import entidad.Pelicula;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -148,6 +149,18 @@ public class PeliculaJpaController implements Serializable {
         return findPeliculaEntities(true, -1, -1);
     }
 
+    public List<Pelicula> findPeliculaAll(){
+        List<Pelicula> pelicula;
+        EntityManager em = getEntityManager();
+        System.out.println("Buscando peliculas");
+        Query consulta = em.createNamedQuery("Pelicula.findAll");
+        pelicula = consulta.getResultList();
+        for (int i = 0; i < pelicula.size(); i++) {
+            System.out.println(pelicula.get(i).getTitulo());
+        }
+        return pelicula;
+    }
+    
     public List<Pelicula> findPeliculaEntities(int maxResults, int firstResult) {
         return findPeliculaEntities(false, maxResults, firstResult);
     }

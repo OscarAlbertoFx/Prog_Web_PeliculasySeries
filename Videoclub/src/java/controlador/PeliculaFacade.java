@@ -1,7 +1,10 @@
 
 package controlador;
 
+import entidad.Comprapelicula;
+import entidad.Detallecomprapelicula;
 import entidad.Pelicula;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -43,6 +46,10 @@ public class PeliculaFacade{
         peliculaPojo.setCantidad_almacen(pelicula.getCantidadAlmacen());
         peliculaPojo.setCantidad_rentas(pelicula.getCantidadRenta());
         return peliculaPojo;
+    }
+    
+    public List<Pelicula> filtrar(){
+        return peliJpa.findPeliculaAll();
     }
     
 }
