@@ -3,6 +3,8 @@ package modelo;
 import controlador.PeliculaFacade;
 import controlador.PeliculaPojo;
 import entidad.Categoria;
+import entidad.Pelicula;
+import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 
@@ -28,7 +30,12 @@ public class PeliculaBean {
     private PeliculaFacade peliculaFacade;
     private PeliculaPojo peliculaPojo;
 
+    private List<Pelicula> valores;
+
     public PeliculaBean() {
+        peliculaFacade = new PeliculaFacade();
+        this.valores= peliculaFacade.filtrar();
+        System.out.println(getValores());
     }
 
     public int getIdPelicula() {
@@ -141,6 +148,14 @@ public class PeliculaBean {
 
     public void setCategoria_nombre(String categoria_nombre) {
         this.categoria_nombre = categoria_nombre;
+    }
+
+    public List<Pelicula> getValores() {
+        return valores;
+    }
+
+    public void setValores(List<Pelicula> valores) {
+        this.valores = valores;
     }
 
     public String buscar_descripcion() {
